@@ -16,8 +16,8 @@ class Medicine(models.Model):
     title = models.CharField(max_length=100, verbose_name="Medicine Title")
     slug = models.SlugField(max_length=100, verbose_name="Medicine Slug")
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='medicines', verbose_name="Medicine Image")
-    manufactured_by = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='medicines', verbose_name="Medicine Image", blank=True)
+    manufactured_by = models.CharField(max_length=50, blank=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     is_active = models.BooleanField(verbose_name="Is Active?")
 
