@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>General Form</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Add Medicine</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">You can add medicine through this form</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="m_name">Medicine Title</label>
+                    <input type="text" value="{{medicine.title}}" name="m_name" class="form-control" id="m_name" placeholder="Enter name">
+                  </div>
+                  <div class="form-group">
+                      <label for="category">Category</label>
+                      <select class="form-control" id="category" name="category">
+                        {% for category in categories %}
+                          <option value="{{category.id}}" {% if medicine.category.id == category.id %} selected {% endif %}>{{ category.title }}</option>
+                        {% endfor %}
+                      </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="image_input">Medicine image</label>
+                    <input type="file" id="image_input" name="medicine_image">
+                  </div>
+                  <div class="form-group">
+                    <label for="manufacture">Manufactured By</label>
+                    <input type="text" value="{{medicine.manufactured_by}}" name="manufacture" class="form-control" id="manufacture" placeholder="Manufactured by">
+                  </div>
+                  <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" value="{{medicine.price}}" class="form-control" id="price" placeholder="Price" name="price">
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" {% if medicine.is_active %} checked {% endif %} type="checkbox" id="customCheckbox2" name="active">
+                    <label for="customCheckbox2" class="custom-control-label">Active or Not</label>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                {% url 'add-medicine' as add_medicine %}
+                {% if request.path == add_medicine %}
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary float-right">Add</button>
+                  </div>
+                {% else %}
+                  <div class="card-footer">
+                    <a href="{% url 'update-medicine' medicine.id %}">
+                      <button class="btn btn-primary float-right">Update</button>
+                    </a>
+                  </div>
+                {% endif %}
+              </form>
+            </div>
+            <!-- /.card -->
+
+
+          </div>
+          <!--/.col (left) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}
