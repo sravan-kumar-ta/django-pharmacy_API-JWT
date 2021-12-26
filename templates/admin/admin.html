@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>General Form</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Add Medicine</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">You can add admin through this form</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" method="POST">
+                {% csrf_token %}
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="m_name">First Name</label>
+                        <input type="text" value="" name="f_name" class="form-control" id="m_name" placeholder="Enter first name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="m_sname">Second Name</label>
+                        <input type="text" value="" name="s_name" class="form-control" id="m_sname" placeholder="Enter second name">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" value="" name="username" class="form-control" id="username" placeholder="Enter username">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" value="" name="email" class="form-control" id="email" placeholder="Enter email">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" value="" name="password" class="form-control" id="password" placeholder="Enter password">
+                      </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                {% url 'add-admin' as add_admin %}
+                {% if request.path == add_admin %}
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary float-right">Add Admin</button>
+                  </div>
+                {% else %}
+                  <div class="card-footer">
+                    <a href="">
+                      <button class="btn btn-primary float-right">Update Admin</button>
+                    </a>
+                  </div>
+                {% endif %}
+              </form>
+            </div>
+            <!-- /.card -->
+
+
+          </div>
+          <!--/.col (left) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}
