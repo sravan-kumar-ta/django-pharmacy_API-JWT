@@ -66,9 +66,15 @@
                     <label for="manufacture">Manufactured By</label>
                     <input type="text" value="{{medicine.manufactured_by}}" name="manufacture" class="form-control" id="manufacture" placeholder="Manufactured by">
                   </div>
-                  <div class="form-group">
+                  <div class="form-group d-flex">
+                    <div class="col-md-6">
                     <label for="price">Price</label>
                     <input type="number" value="{{medicine.price}}" class="form-control" id="price" placeholder="Price" name="price">
+                    </div>
+                    <div class="col-md-6">
+                    <label for="stock">Stock</label>
+                    <input type="number" value="{{medicine.stock}}" class="form-control" id="stock" placeholder="Stock" name="stock">
+                    </div>
                   </div>
                   <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" {% if medicine.is_active %} checked {% endif %} type="checkbox" id="customCheckbox2" name="active">

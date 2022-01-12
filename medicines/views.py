@@ -24,6 +24,7 @@ def add_medicine(request):
             image = None
         manufacture = request.POST.get('manufacture')
         price = request.POST.get('price')
+        stock = request.POST.get('stock')
         is_active = request.POST.get('active')
 
         slug = slugify(name)
@@ -32,7 +33,7 @@ def add_medicine(request):
             is_active = 'True'
         else:
             is_active = 'False'
-        medicine = Medicine(title=name, slug=slug, category=category, image=image, manufactured_by=manufacture, price=price, is_active=is_active)
+        medicine = Medicine(title=name, slug=slug, category=category, image=image, manufactured_by=manufacture, price=price, stock=stock, is_active=is_active)
         medicine.save()
 
         return redirect('manage-medicine')
@@ -57,6 +58,7 @@ def update_medicine(request, m_id):
             image = item.image
         manufacture = request.POST.get('manufacture')
         price = request.POST.get('price')
+        stock = request.POST.get('stock')
         is_active = request.POST.get('active')
 
         slug = slugify(name)
@@ -72,6 +74,7 @@ def update_medicine(request, m_id):
         item.image = image
         item.manufactured_by = manufacture
         item.price = price
+        item.stock = stock
         item.is_active = is_active
         item.save()
 
