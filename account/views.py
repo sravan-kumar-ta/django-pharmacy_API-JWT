@@ -47,3 +47,11 @@ def delete_admin(request, admin_id):
     admin = get_object_or_404(CustomUser, id=admin_id)
     admin.delete()
     return redirect('manage-admin')
+
+
+def register(request):
+    pass
+
+
+def login(request):
+    pass
