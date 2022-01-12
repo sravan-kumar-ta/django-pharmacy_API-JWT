@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.text import slugify
 
@@ -5,15 +6,18 @@ from .models import Medicine, Category
 
 
 # Create your views here.
+@login_required
 def home(request):
     return render(request, 'home.html')
 
 
+@login_required
 def medicine(request):
     medicines = Medicine.objects.all().order_by('-id')
     return render(request, 'medicine/manage_medicine.html', {'medicines': medicines})
 
 
+@login_required
 def add_medicine(request):
     if request.method == 'POST':
         name = request.POST.get('m_name')
@@ -42,6 +46,7 @@ def add_medicine(request):
         return render(request, 'medicine/add_medicine.html', {'categories': categ})
 
 
+@login_required
 def update_medicine(request, m_id):
     if request.method != 'POST':
         item = get_object_or_404(Medicine, id=m_id)
@@ -81,6 +86,7 @@ def update_medicine(request, m_id):
         return redirect('manage-medicine')
 
 
+@login_required
 def delete_medicine(request, m_id):
     item = get_object_or_404(Medicine, id=m_id)
     item.image.delete()
