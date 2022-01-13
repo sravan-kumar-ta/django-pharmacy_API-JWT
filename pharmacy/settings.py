@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+import environ
 from pathlib import Path
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -41,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'medicines',
     'account',
+    'API_authentication',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +147,6 @@ AUTHENTICATION_BACKENDS = ['account.CustomBackend.EmailBackend']
 AUTH_USER_MODEL = "account.CustomUser"
 
 LOGIN_URL = '/admins/login/'
+
+# JWT_SECRET_KEY
+JWT_SECRET_KEY = env('JWT_SECRET_KEY')
