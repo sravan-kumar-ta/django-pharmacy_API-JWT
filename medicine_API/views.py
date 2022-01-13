@@ -1,0 +1,12 @@
+from rest_framework.generics import ListCreateAPIView
+from medicines.models import Medicine
+from .serializers import MedicineSerializer
+from django.db.models import Q
+
+
+# Create your views here.
+class MedicineList(ListCreateAPIView):
+    serializer_class = MedicineSerializer
+
+    def get_queryset(self):
+        return Medicine.objects.filter(Q(stock__gt=0), is_active=True)

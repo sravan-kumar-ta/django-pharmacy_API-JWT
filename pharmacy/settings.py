@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'account',
     'API_authentication',
     'rest_framework',
+    'medicine_API',
 ]
 
 MIDDLEWARE = [
