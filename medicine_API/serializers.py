@@ -5,4 +5,4 @@ from medicines.models import Medicine
 class MedicineSerializer(ModelSerializer):
     class Meta:
         model = Medicine
-        fields = ['title', 'category', 'image', 'manufactured_by', 'price', 'is_active', 'stock']
+        fields = ['id', 'title', 'category', 'image', 'manufactured_by', 'price', 'is_active', 'stock']
