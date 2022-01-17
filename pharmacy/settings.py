@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'API_authentication',
     'rest_framework',
     'medicine_API',
+    'drf_yasg',
 ]
 
 REST_FRAMEWORK = {

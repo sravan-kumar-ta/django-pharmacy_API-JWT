@@ -1,8 +1,15 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 from medicines.models import Medicine
+from .models import Order
 
 
-class MedicineSerializer(ModelSerializer):
+class MedicineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Medicine
-        fields = ['id', 'title', 'category', 'image', 'manufactured_by', 'price', 'is_active', 'stock']
+        fields = ['id', 'title', 'category', 'image', 'manufactured_by', 'price', 'stock']
+
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ['medicine', 'quantity']
