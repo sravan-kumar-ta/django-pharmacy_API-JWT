@@ -19,8 +19,8 @@ class Medicine(models.Model):
     image = models.ImageField(upload_to='medicines', verbose_name="Medicine Image", blank=True)
     manufactured_by = models.CharField(max_length=50, blank=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    is_active = models.BooleanField(verbose_name="Is Active?")
-    stock = models.IntegerField(default=0)
+    is_active = models.BooleanField(verbose_name="Is Active?", default=True)
+    stock = models.IntegerField(default=10)
 
     def __str__(self):
         return self.title

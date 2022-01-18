@@ -27,14 +27,14 @@ class OrderView(GenericAPIView):
         serializer = OrderSerializer(data=request.data, many=True)
         if serializer.is_valid():
             for item in request.data:
-                medicine_id = item["medicine"]
+                medicine_id = item["medicine_id"]
                 quantity = item["quantity"]
                 medicine = get_object_or_404(Medicine, id=medicine_id)
                 if medicine.stock < quantity:
                     return Response(serializer.errors, status=status.HTTP_409_CONFLICT)
 
             for item in request.data:
-                medicine_id = item["medicine"]
+                medicine_id = item["medicine_id"]
                 quantity = item["quantity"]
                 medicine = get_object_or_404(Medicine, id=medicine_id)
                 medicine.stock -= quantity

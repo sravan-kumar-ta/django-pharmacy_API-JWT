@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(max_length=255, min_length=2)
     first_name = serializers.CharField(max_length=255, min_length=2)
     last_name = serializers.CharField(max_length=255, min_length=2)
-    user_type = serializers.CharField(default=3)
+    user_type = serializers.HiddenField(default=3)
 
     class Meta:
         model = CustomUser

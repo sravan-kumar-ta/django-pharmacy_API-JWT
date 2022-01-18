@@ -12,4 +12,4 @@ class MedicineSerializer(serializers.ModelSerializer):
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
-        fields = ['medicine', 'quantity']
+        fields = ['medicine_id', 'quantity']
