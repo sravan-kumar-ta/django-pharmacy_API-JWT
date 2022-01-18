@@ -50,6 +50,16 @@ INSTALLED_APPS = [
     'drf_yasg',
 ]
 
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        "Auth Token eg [Bearer (JWT) ]": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'API_authentication.backends.JWTAuthentication',
@@ -150,7 +160,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# AUTHENTICATION_BACKENDS = ['account.CustomBackend.EmailBackend']
+AUTHENTICATION_BACKENDS = ['account.CustomBackend.EmailBackend']
 
 AUTH_USER_MODEL = "account.CustomUser"
 
