@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'medicine_API',
     'drf_yasg',
+    'API_customers'
 ]
 
 SWAGGER_SETTINGS = {
