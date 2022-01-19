@@ -3,5 +3,5 @@
 
 <h2>In this project...</h2>
 <h4>Custom Backend (Email authentication)</h4>
-<h4>Jason Web Token</h4>
+<h4>pyJWT - Jason Web Token</h4>
 <h4>Swagger UI - Rest API documentation tool</h4>
