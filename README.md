@@ -7,7 +7,7 @@
 <h4>Swagger UI - Rest API documentation tool</h4>
 
 ## Models
-![pharmacy_api](https://user-images.githubusercontent.com/95027726/150691198-25f39b3c-258e-42fe-9645-0877ee5c0425.png)
+![papa](https://user-images.githubusercontent.com/95027726/150796876-eedb494f-bbc7-4335-82b6-f1f1a6af2dce.png)
 
 ## Route map
-![api](https://user-images.githubusercontent.com/95027726/150691137-2d2434c0-6fb0-4d84-b841-94803b6cf55c.jpg)
+![api](https://user-images.githubusercontent.com/95027726/150796640-74d5382e-729e-414c-8732-a8013524e3d7.jpg)
