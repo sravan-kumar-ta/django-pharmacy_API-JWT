@@ -3,7 +3,6 @@ from django.db import models
 
 class Category(models.Model):
     title = models.CharField(max_length=60, verbose_name="Category Title")
-    slug = models.SlugField(max_length=60, verbose_name="Category Slug")
 
     def __str__(self):
         return self.title
@@ -14,7 +13,6 @@ class Category(models.Model):
 
 class Medicine(models.Model):
     title = models.CharField(max_length=100, verbose_name="Medicine Title")
-    slug = models.SlugField(max_length=100, verbose_name="Medicine Slug")
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='medicines', verbose_name="Medicine Image", blank=True)
     manufactured_by = models.CharField(max_length=50, blank=True)

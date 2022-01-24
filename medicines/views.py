@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from django.utils.text import slugify
 
 from .models import Medicine, Category
 
@@ -31,13 +30,12 @@ def add_medicine(request):
         stock = request.POST.get('stock')
         is_active = request.POST.get('active')
 
-        slug = slugify(name)
         category = get_object_or_404(Category, id=category_id)
         if is_active == 'on':
             is_active = 'True'
         else:
             is_active = 'False'
-        medicine = Medicine(title=name, slug=slug, category=category, image=image, manufactured_by=manufacture, price=price, stock=stock, is_active=is_active)
+        medicine = Medicine(title=name, category=category, image=image, manufactured_by=manufacture, price=price, stock=stock, is_active=is_active)
         medicine.save()
 
         return redirect('manage-medicine')
@@ -66,7 +64,6 @@ def update_medicine(request, m_id):
         stock = request.POST.get('stock')
         is_active = request.POST.get('active')
 
-        slug = slugify(name)
         category = get_object_or_404(Category, id=category_id)
         if is_active == 'on':
             is_active = 'True'
@@ -74,7 +71,6 @@ def update_medicine(request, m_id):
             is_active = 'False'
 
         item.title = name
-        item.slug = slug
         item.category = category
         item.image = image
         item.manufactured_by = manufacture
